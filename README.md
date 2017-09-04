@@ -1,9 +1,9 @@
 # d3-webpack-babel
 
-simple d3 boilerplate to test some simple code
+simple d3 webpack boilerplate to test some simple code
 
 ### What's in it?
-Just a simple [app.js](./index.jsx), [webpack.config.js](./webpack.config.js) and [index.html](./public/index.html) file.
+Just a simple [index.js](./index.jsx), [webpack.config.js](./webpack.config.js) and [index.html](./src/template.html) file.
 
 ### To run
 
@@ -16,10 +16,10 @@ You can simply run webpack build using this command:
 If you want to run with webpack-dev-server simply run this command:
 
 ```
-> $ npm run dev
+> $ npm run start
 ```
 And go to:
 ```
-http://localhost:8082/webpack-dev-server/bundle
+http://http://127.0.0.1:8888/webpack-dev-server/bundle
 
 ```

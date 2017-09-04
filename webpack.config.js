@@ -1,53 +1,33 @@
-const webpack = require("webpack");
-const path = require("path");
-const loaders = require("./webpack.loaders");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require('webpack');
+const path = require('path');
+const loaders = require('./webpack.loaders');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const HOST = process.env.HOST || "127.0.0.1";
-const PORT = process.env.PORT || "8888";
+const HOST = process.env.HOST || '127.0.0.1';
+const PORT = process.env.PORT || '8888';
 
 
 loaders.push({
 // global css
   test: /\.css$/,
-  exclude: /[/\\]src[/\\]/,
+  exclude: /[/\\]node_modules[/\\]/,
     // include: /[\/\\](globalStyles)[\/\\]/,
   loaders: [
-    "style-loader?sourceMap",
-    "css-loader"
+    'style-loader?sourceMap',
+    'css-loader'
   ]
 },
 // global scss
   {
     test: /\.scss$/,
-  // exclude: /[\/\\]src[\/\\]/,
-    include: /[/\\](layouts)[/\\]/,
+    exclude: /[\/\\]node_modules[\/\\]/,
+    // include: /[/\\](layouts)[/\\]/,
     loaders: [
-      "style-loader?sourceMap",
-      "css-loader",
-      "sass-loader"
+      'style-loader?sourceMap',
+      'css-loader',
+      'sass-loader'
     ]
   },
-  // local scss modules
-  {
-    test: /\.scss$/,
-    // include: /[/\\]()[/\\]/,
-  exclude: /[\/\\]node_modules[\/\\]/,
-    loaders: [
-      "style-loader?sourceMap",
-      "css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]",
-      // "postcss-loader",
-      "sass-loader"
-    ]
-  },
-  {
-    test: /bootstrap\/dist\/js\/umd\//,
-    loader: "imports-loader?jQuery=jquery"
-  },
-  {
-    test: /mapbox-gl.+\.js$/,
-    loader: "transform-loader/cacheable?brfs"
-  }
 );
 
 // local css modules
@@ -63,17 +43,17 @@ loaders.push({
 module.exports = {
   entry: [
     // "react-hot-loader/patch",
-    "./src/index.js" // your app's entry point
+    './src/index.js' // your app's entry point
   ],
-  devtool: process.env.WEBPACK_DEVTOOL || "source-map",
+  devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
   output: {
-    path: path.join(__dirname, "public"),
-    filename: "bundle.js"
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js'
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
     alias: {
-      "mapbox-gl$": path.resolve("./node_modules/mapbox-gl/dist/mapbox-gl.js")
+      'mapbox-gl$': path.resolve('./node_modules/mapbox-gl/dist/mapbox-gl.js')
       // TODO
       // src$: './src'
     }
@@ -82,7 +62,7 @@ module.exports = {
     loaders
   },
   devServer: {
-    contentBase: "./public",
+    contentBase: './public',
     noInfo: true,
     hot: true,
     inline: true,
@@ -90,8 +70,8 @@ module.exports = {
     port: PORT,
     host: HOST,
     proxy: {
-      "**": {
-        target: "http://localhost:8000/",
+      '**': {
+        target: 'http://localhost:8000/',
         secure: false
       }
     }
@@ -100,7 +80,7 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/template.html"
+      template: './src/template.html'
     })
     // new webpack.ProvidePlugin({
       // $: 'jquery',
