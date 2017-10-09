@@ -27,7 +27,7 @@ loaders.push({
       'css-loader',
       'sass-loader'
     ]
-  },
+  }
 );
 
 // local css modules
