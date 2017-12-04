@@ -7,10 +7,14 @@
 }
 
 .grid .tick {
-    stroke: lightgrey;
-    opacity: 0.2;
+  stroke: lightgrey;
+  opacity: 0.2;
 }
 
 .grid path {
-      stroke-width: 0;
+  stroke-width: 0;
+}
+
+#app {
+  border: 1px solid black;
 }
