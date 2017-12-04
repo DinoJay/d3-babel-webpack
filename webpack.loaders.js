@@ -2,6 +2,27 @@ const path = require('path');
 
 module.exports = [
   {
+    // global css
+    test: /\.css$/,
+    exclude: /[/\\]node_modules[/\\]/,
+    // include: /[\/\\](globalStyles)[\/\\]/,
+    loaders: [
+      'style-loader?sourceMap',
+      'css-loader'
+    ]
+  },
+  // global scss
+  {
+    test: /\.scss$/,
+    exclude: /[\/\\]node_modules[\/\\]/,
+    // include: /[/\\](layouts)[/\\]/,
+    loaders: [
+      'style-loader?sourceMap',
+      'css-loader',
+      'sass-loader'
+    ]
+  },
+  {
     enforce: 'pre',
     test: /\.js$/,
     loader: 'remove-flow-types-loader',
